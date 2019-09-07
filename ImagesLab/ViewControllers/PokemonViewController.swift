@@ -21,17 +21,40 @@ class PokemonViewController: UIViewController {
         }
     }
     
+    var filteredPokemons: [Pokemon] {
+        get {
+            guard let searchString = searchString else { return pokemons }
+            
+            guard searchString != "" else { return pokemons}
+            
+            return Pokemon.getFilteredResults(arr: pokemons, searchText: searchString)
+        }
+    }
+    
+    var searchString: String? = nil {
+        didSet {
+            self.pokemonTableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         loadData()
+        configureSearchBar()
     }
     
     private func configureTableView() {
         pokemonTableView.dataSource = self
         pokemonTableView.rowHeight = 160
+        pokemonTableView.tableFooterView = UIView()
         
     }
+    
+    func configureSearchBar() {
+        pokemonSearchBar.delegate = self
+    }
+
     
     private func loadData() {
         
@@ -49,7 +72,7 @@ class PokemonViewController: UIViewController {
 }
 extension PokemonViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemons.count
+        return filteredPokemons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +80,7 @@ extension PokemonViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath) as! PokemonTableViewCell
         
-        let currentPokemon = pokemons[indexPath.row]
+        let currentPokemon = filteredPokemons[indexPath.row]
        
         ImageHelper.shared.getImage(urlStr: currentPokemon.imageUrl) { (result) in
             DispatchQueue.main.async {
@@ -80,12 +103,17 @@ extension PokemonViewController: UITableViewDataSource {
             guard let DetailVC = segue.destination as? PokemonDetailViewController else {fatalError("unexpected segueVC")}
             guard let selectedIndexPath = pokemonTableView.indexPathForSelectedRow else{fatalError("no row selected")}
             
-            let pokemon = pokemons[selectedIndexPath.row]
+            let pokemon = filteredPokemons[selectedIndexPath.row]
             
             DetailVC.pokemon = pokemon
         default:
             fatalError("unexpected segue identifies")
         }
     }
-    
+}
+
+extension PokemonViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchText
+    }
 }
