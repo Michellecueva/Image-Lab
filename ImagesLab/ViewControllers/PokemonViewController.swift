@@ -68,11 +68,24 @@ extension PokemonViewController: UITableViewDataSource {
                     cell.pokemonImage.image = imageFromOnline
                 }
             }
-            
         }
-        
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueIdentifier = segue.identifier else {fatalError("No identifier in segue")}
+        
+        switch segueIdentifier {
+        case "pokemonSegue":
+            guard let DetailVC = segue.destination as? PokemonDetailViewController else {fatalError("unexpected segueVC")}
+            guard let selectedIndexPath = pokemonTableView.indexPathForSelectedRow else{fatalError("no row selected")}
+            
+            let pokemon = pokemons[selectedIndexPath.row]
+            
+            DetailVC.pokemon = pokemon
+        default:
+            fatalError("unexpected segue identifies")
+        }
+    }
     
 }

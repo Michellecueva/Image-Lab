@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="779.71014492753625" y="-231.02678571428569"/>
         </scene>
-        <!--Pokemon View Controller-->
+        <!--Pokemon Detail View Controller-->
         <scene sceneID="hpp-0A-IkE">
             <objects>
-                <viewController id="1YV-Qs-O7x" customClass="PokemonViewController" customModule="ImagesLab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1YV-Qs-O7x" customClass="PokemonDetailViewController" customModule="ImagesLab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="StP-pT-nro">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,6 +190,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pjd-p0-9x6"/>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="1wF-6m-acO" id="we6-OQ-VZ0"/>
+                        <outlet property="pokemonImage" destination="w3P-Zg-fhi" id="3jd-J5-iKg"/>
+                        <outlet property="setLabel" destination="QvU-mz-O2k" id="jgK-Or-mTQ"/>
+                        <outlet property="typeLabel" destination="BQG-R4-Rnv" id="xkq-Dg-4e8"/>
+                        <outlet property="weaknessLabel" destination="8X5-r0-Q5I" id="iNl-dh-CgB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzi-7S-4SB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
