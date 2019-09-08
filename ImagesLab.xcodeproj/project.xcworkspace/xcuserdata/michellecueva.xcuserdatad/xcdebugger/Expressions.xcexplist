@@ -25,6 +25,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "UserTableViewController.tableView(_:numberOfRowsInSection:):UserTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "users">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in ComicViewController.loadData():ComicViewController.swift">
       </ContextState>
       <ContextState

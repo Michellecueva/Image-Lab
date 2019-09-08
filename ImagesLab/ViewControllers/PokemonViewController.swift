@@ -46,7 +46,7 @@ class PokemonViewController: UIViewController {
     
     private func configureTableView() {
         pokemonTableView.dataSource = self
-        pokemonTableView.rowHeight = 160
+        pokemonTableView.rowHeight = 500
         pokemonTableView.tableFooterView = UIView()
         
     }
