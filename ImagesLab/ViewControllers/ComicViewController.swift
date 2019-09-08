@@ -16,14 +16,14 @@ class ComicViewController: UIViewController {
     var comic: Comic! {
         didSet {
             self.loadImage()
-            comicTextField.placeholder = comic.num.description
+            comicTextField.text = comic.num.description
             comicStepper.value = Double(comic.num)
+            
         }
     }
     
     var currentComic: Int?
-    
-    var currentIssueNum: Int!
+
     
     @IBOutlet weak var comicTextField: UITextField!
     
@@ -97,6 +97,17 @@ extension ComicViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
         return string.rangeOfCharacter(from: invalidCharacters) == nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let userInput = textField.text else {return false}
+        if userInput == "0" || userInput > currentComic!.description {
+            print("No pendejo")
+            return false
+        } else {
+            loadData(comicIssue: Int(userInput))
+            return true
+        }
     }
     
 }
