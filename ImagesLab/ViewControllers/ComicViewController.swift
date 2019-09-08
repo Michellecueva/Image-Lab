@@ -12,10 +12,22 @@ class ComicViewController: UIViewController {
 
     @IBOutlet weak var comicImage: UIImageView!
     
-    var comic: Comic!
+    
+    var comic: Comic! {
+        didSet {
+            self.loadImage()
+            comicTextField.placeholder = comic.num.description
+            comicStepper.value = Double(comic.num)
+        }
+    }
     
     var currentComic: Int?
     
+    var currentIssueNum: Int!
+    
+    @IBOutlet weak var comicTextField: UITextField!
+    
+    @IBOutlet weak var comicStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +42,11 @@ class ComicViewController: UIViewController {
         loadData(comicIssue: getRandomComic())
     }
     
+    
+    @IBAction func pressComicStepper(_ sender: UIStepper) {
+        loadData(comicIssue: Int(sender.value))
+    }
+    
     private func loadData(comicIssue: Int?) {
         
         ComicAPIHelper.shared.getComic(num:comicIssue) {(result) in
@@ -42,7 +59,6 @@ class ComicViewController: UIViewController {
                     if self.currentComic == nil {
                         self.currentComic = self.comic.num
                     }
-                    self.loadImage()
                 }
             }
         }

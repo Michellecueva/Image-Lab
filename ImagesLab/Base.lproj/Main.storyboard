@@ -251,6 +251,9 @@
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="2199" translatesAutoresizingMaskIntoConstraints="NO" id="LkY-sz-RFO">
                                         <rect key="frame" x="73" y="59" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="pressComicStepper:" destination="WGD-dh-qs7" eventType="valueChanged" id="7pF-hz-XzK"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -262,6 +265,8 @@
                     <tabBarItem key="tabBarItem" title="Comics" id="eRb-1Z-h6i"/>
                     <connections>
                         <outlet property="comicImage" destination="ddf-eA-Uns" id="llE-vY-qne"/>
+                        <outlet property="comicStepper" destination="LkY-sz-RFO" id="gop-2r-CIJ"/>
+                        <outlet property="comicTextField" destination="jCd-tm-Y3x" id="BGA-m7-FZA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnK-gR-5OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
