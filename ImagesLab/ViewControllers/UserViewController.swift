@@ -26,7 +26,7 @@ class UserViewController: UIViewController {
     
     private func configureTableView() {
         userTableView.dataSource = self
-        userTableView.rowHeight = 100
+        userTableView.rowHeight = 120
         userTableView.tableFooterView = UIView()
         
     }
@@ -55,8 +55,8 @@ extension UserViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UsersTableViewCell
         let user = users[indexPath.row]
         cell.nameLabel.text = user.getFullName()
-        cell.ageLabel.text = user.dob.age.description
-        cell.cellPhoneLabel.text = user.cell
+        cell.ageLabel.text = "Age: \(user.dob.age)"
+        cell.cellPhoneLabel.text = "Cell: \(user.cell)"
         
         ImageHelper.shared.getImage(urlStr: user.picture.thumbnail) { (result) in
             DispatchQueue.main.async {
