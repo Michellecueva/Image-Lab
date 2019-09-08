@@ -266,7 +266,7 @@
                     <connections>
                         <outlet property="comicImage" destination="ddf-eA-Uns" id="llE-vY-qne"/>
                         <outlet property="comicStepper" destination="LkY-sz-RFO" id="gop-2r-CIJ"/>
-                        <outlet property="comicTextField" destination="jCd-tm-Y3x" id="BGA-m7-FZA"/>
+                        <outlet property="comicTextField" destination="jCd-tm-Y3x" id="VkG-Yb-F8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnK-gR-5OP" userLabel="First Responder" sceneMemberID="firstResponder"/>

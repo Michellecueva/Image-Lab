@@ -32,6 +32,8 @@ class ComicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData(comicIssue: nil)
+        comicTextField.delegate = self
+        comicTextField.keyboardType = .numberPad
     }
     
     @IBAction func setCurrentComic(_ sender: UIButton) {
@@ -41,6 +43,7 @@ class ComicViewController: UIViewController {
     @IBAction func setRandomComic(_ sender: UIButton) {
         loadData(comicIssue: getRandomComic())
     }
+    
     
     
     @IBAction func pressComicStepper(_ sender: UIStepper) {
@@ -58,6 +61,7 @@ class ComicViewController: UIViewController {
                     self.comic = comicFromJSON
                     if self.currentComic == nil {
                         self.currentComic = self.comic.num
+                        self.comicStepper.maximumValue = Double(self.comic.num)
                     }
                 }
             }
@@ -86,4 +90,13 @@ class ComicViewController: UIViewController {
         }
     }
 
+}
+
+extension ComicViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+        return string.rangeOfCharacter(from: invalidCharacters) == nil
+    }
+    
 }
