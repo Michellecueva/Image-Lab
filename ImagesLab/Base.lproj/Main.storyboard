@@ -229,6 +229,9 @@
                                         <rect key="frame" x="164" y="138" width="57" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Random"/>
+                                        <connections>
+                                            <action selector="setRandomComic:" destination="WGD-dh-qs7" eventType="touchUpInside" id="Qtd-E0-DKI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-3G-L23">
                                         <rect key="frame" x="5" y="138" width="52" height="30"/>

@@ -14,15 +14,22 @@ class ComicViewController: UIViewController {
     
     var comic: Comic!
     
+    var currentComic: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData(comicIssue: 2188)
+        loadData(comicIssue: nil)
     }
     
     @IBAction func setCurrentComic(_ sender: UIButton) {
         loadData(comicIssue: nil)
     }
+    
+    @IBAction func setRandomComic(_ sender: UIButton) {
+        loadData(comicIssue: getRandomComic())
+    }
+    
     private func loadData(comicIssue: Int?) {
         
         ComicAPIHelper.shared.getComic(num:comicIssue) {(result) in
@@ -32,6 +39,9 @@ class ComicViewController: UIViewController {
                     print(error)
                 case .success(let comicFromJSON):
                     self.comic = comicFromJSON
+                    if self.currentComic == nil {
+                        self.currentComic = self.comic.num
+                    }
                     self.loadImage()
                 }
             }
@@ -39,8 +49,7 @@ class ComicViewController: UIViewController {
     }
     
     
-    
-    func loadImage() {
+    private func loadImage() {
         ImageHelper.shared.getImage(urlStr:comic.img) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -53,7 +62,12 @@ class ComicViewController: UIViewController {
         }
     }
     
-    
-
+    private func getRandomComic() -> Int {
+        if let currentComic = currentComic {
+            return Int.random(in: 0 ... currentComic)
+        } else {
+            return Int.random(in: 0 ... 1000)
+        }
+    }
 
 }

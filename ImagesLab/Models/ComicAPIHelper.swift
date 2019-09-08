@@ -21,6 +21,7 @@ struct  ComicAPIHelper {
         return "https://xkcd.com/\(num)/info.0.json"
     }
     
+    
     mutating func getComic(num: Int?, completionHandler: @ escaping (Result<Comic, AppError>) -> ()) {
         
         if num != nil {
