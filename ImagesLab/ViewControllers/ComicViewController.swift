@@ -103,11 +103,20 @@ extension ComicViewController: UITextFieldDelegate {
         guard let userInput = textField.text else {return false}
         if userInput == "0" || userInput > currentComic!.description {
             print("No pendejo")
+            addAlert(userInput: userInput)
             return false
         } else {
             loadData(comicIssue: Int(userInput))
             return true
         }
+    }
+    func addAlert(userInput: String) {
+        let alert = UIAlertController(title: "Invalid Entry", message: "Sorry, there is no Comic Issue #\(userInput). Please try again!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        
+        
+        self.present(alert, animated: true)
     }
     
 }
