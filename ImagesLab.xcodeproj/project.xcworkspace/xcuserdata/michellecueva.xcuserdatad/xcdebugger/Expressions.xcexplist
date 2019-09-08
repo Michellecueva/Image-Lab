@@ -13,5 +13,22 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in ComicViewController.loadImage():ComicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.comicImage.image">
+            </PersistentString>
+            <PersistentString
+               value = "imageFromOnline">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in ComicViewController.loadData():ComicViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ImageHelper.getImage(urlStr:completionHandler:):ImageHelper.swift">
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

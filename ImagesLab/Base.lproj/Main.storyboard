@@ -212,7 +212,7 @@
         <!--Comics-->
         <scene sceneID="fNg-P7-TcC">
             <objects>
-                <viewController id="WGD-dh-qs7" sceneMemberID="viewController">
+                <viewController id="WGD-dh-qs7" customClass="ComicViewController" customModule="ImagesLab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wR7-ou-kc4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,14 +226,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jU8-Bg-O2p">
-                                        <rect key="frame" x="169" y="138" width="46" height="30"/>
+                                        <rect key="frame" x="164" y="138" width="57" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Random"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-3G-L23">
-                                        <rect key="frame" x="8" y="138" width="46" height="30"/>
+                                        <rect key="frame" x="5" y="138" width="52" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Current"/>
+                                        <connections>
+                                            <action selector="setCurrentComic:" destination="WGD-dh-qs7" eventType="touchUpInside" id="xsg-Mx-Xf2"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCd-tm-Y3x">
                                         <rect key="frame" x="26" y="0.0" width="189" height="30"/>
@@ -242,7 +245,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LkY-sz-RFO">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="2199" translatesAutoresizingMaskIntoConstraints="NO" id="LkY-sz-RFO">
                                         <rect key="frame" x="73" y="59" width="94" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </stepper>
@@ -254,6 +257,9 @@
                         <viewLayoutGuide key="safeArea" id="jPz-R3-3mN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Comics" id="eRb-1Z-h6i"/>
+                    <connections>
+                        <outlet property="comicImage" destination="ddf-eA-Uns" id="llE-vY-qne"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rnK-gR-5OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
